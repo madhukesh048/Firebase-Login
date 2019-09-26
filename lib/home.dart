@@ -1,44 +1,58 @@
-import 'package:firebase_login/signInButtonWidget.dart';
+import 'package:firebase_login/auth.dart';
+import 'package:firebase_login/login.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
-class Homepage extends StatelessWidget {
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        centerTitle: true,
+        title: Text(
+          'Home',
+          style: TextStyle(color: Colors.black),
+        ),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.exit_to_app),
+            onPressed: () {
+              signOutGoogle();
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => Loginpage()));
+            },
+            color: Colors.black,
+          )
+        ],
+      ),
       body: Container(
         decoration: BoxDecoration(
             color: Colors.purpleAccent,
-            gradient: LinearGradient(colors: [Colors.blue, Colors.red])),
+            gradient:
+                LinearGradient(colors: [Colors.blue[200], Colors.lightBlue])),
         child: Center(
+            child: Padding(
+          padding: const EdgeInsets.all(16.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              SvgPicture.asset(
-                'assets/icons/firebase.svg',
-                height: 180,
-                width: 180,
+              CircleAvatar(
+                backgroundImage: NetworkImage(
+                  imageUrl,
+                ),
+                radius: 60,
+                backgroundColor: Colors.transparent,
               ),
               SizedBox(
-                height: 100,
+                height: 16,
               ),
-              SignInButton(
-                title: 'Sign in with Google',
-                assetName: 'assets/icons/search.svg',
-                onTap: () {},
+              Text(
+                name,
+                style: TextStyle(fontSize: 28),
               ),
-              SizedBox(
-                height: 30,
-              ),
-              SignInButton(
-                title: "Sign in with Facebook",
-                assetName: 'assets/icons/facebook.svg',
-                onTap: () {},
-              )
+              Text(email)
             ],
           ),
-        ),
+        )),
       ),
     );
   }

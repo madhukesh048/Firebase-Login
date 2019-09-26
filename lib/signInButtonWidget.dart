@@ -17,7 +17,7 @@ class SignInButton extends StatelessWidget {
     return RaisedButton(
       color: Colors.white,
       splashColor: Colors.transparent,
-      onPressed: () {},
+      onPressed:onTap,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
       highlightElevation: 0,
       child: Padding(
