@@ -49,7 +49,7 @@ class HomePage extends StatelessWidget {
                 name,
                 style: TextStyle(fontSize: 28),
               ),
-              Text(email)
+              Text(email),
             ],
           ),
         )),
